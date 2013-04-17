@@ -1,0 +1,11 @@
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.Repository.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.Repository.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\obj\Debug\Kelasi.Repository.csprojResolveAssemblyReference.cache
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\obj\Debug\Kelasi.Repository.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\obj\Debug\Kelasi.Repository.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\EntityFramework.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.DAL.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.Model.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.DAL.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\Kelasi.Model.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Repository\bin\Debug\EntityFramework.xml

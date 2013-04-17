@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KelasiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="KelasiModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="KelasiModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Topics" EntityType="KelasiModel.Store.Topics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Authors" EntityType="KelasiModel.Store.Users_Authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Videos" EntityType="KelasiModel.Store.Videos" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId" Association="KelasiModel.Store.FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+      <End Role="Topics" EntitySet="Topics" />
+      <End Role="Categories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+      <End Role="Topics" EntitySet="Topics" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+      <End Role="Users_Authors" EntitySet="Users_Authors" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Topic_TopicId" Type="int" />
+  </EntityType>
+  <EntityType Name="Topics">
+    <Key>
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="TopicId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Library_LibraryId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users_Authors">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Bio" Type="nvarchar(max)" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="User_UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Videos">
+    <Key>
+      <PropertyRef Name="VideoId" />
+    </Key>
+    <Property Name="VideoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ReleasedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="NumberOfviewers" Type="int" Nullable="false" />
+    <Property Name="NumberOfSubscribers" Type="int" Nullable="false" />
+    <Property Name="Size" Type="int" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" />
+    <Property Name="ImagePath" Type="nvarchar(max)" />
+    <Property Name="Category_CategoryId" Type="int" />
+    <Property Name="Topic_TopicId" Type="int" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="Language_LanguageId" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+    <End Role="Topics" Type="KelasiModel.Store.Topics" Multiplicity="0..1" />
+    <End Role="Categories" Type="KelasiModel.Store.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topics">
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="Categories">
+        <PropertyRef Name="Topic_TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+    <End Role="Categories" Type="KelasiModel.Store.Categories" Multiplicity="0..1" />
+    <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="Category_CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+    <End Role="Topics" Type="KelasiModel.Store.Topics" Multiplicity="0..1" />
+    <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topics">
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="Topic_TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+    <End Role="Users_Authors" Type="KelasiModel.Store.Users_Authors" Multiplicity="0..1" />
+    <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Authors">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

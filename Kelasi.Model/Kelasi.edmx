@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KelasiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="KelasiModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="KelasiModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Topics" EntityType="KelasiModel.Store.Topics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users_Authors" EntityType="KelasiModel.Store.Users_Authors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Videos" EntityType="KelasiModel.Store.Videos" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId" Association="KelasiModel.Store.FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId" Association="KelasiModel.Store.FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+            <End Role="Users_Authors" EntitySet="Users_Authors" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Topic_TopicId" Type="int" />
+        </EntityType>
+        <EntityType Name="Topics">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Library_LibraryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Users_Authors">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Bio" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="User_UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="VideoId" />
+          </Key>
+          <Property Name="VideoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ReleasedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="NumberOfviewers" Type="int" Nullable="false" />
+          <Property Name="NumberOfSubscribers" Type="int" Nullable="false" />
+          <Property Name="Size" Type="int" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Category_CategoryId" Type="int" />
+          <Property Name="Topic_TopicId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="Language_LanguageId" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+          <End Role="Topics" Type="KelasiModel.Store.Topics" Multiplicity="0..1" />
+          <End Role="Categories" Type="KelasiModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="Topic_TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+          <End Role="Categories" Type="KelasiModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="Category_CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+          <End Role="Topics" Type="KelasiModel.Store.Topics" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="Topic_TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+          <End Role="Users_Authors" Type="KelasiModel.Store.Users_Authors" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Store.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Authors">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KelasiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KelasiEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="KelasiModel.Category" />
+          <EntitySet Name="Topics" EntityType="KelasiModel.Topic" />
+          <EntitySet Name="Users_Authors" EntityType="KelasiModel.Users_Authors" />
+          <EntitySet Name="Videos" EntityType="KelasiModel.Video" />
+          <AssociationSet Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId" Association="KelasiModel.FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId" Association="KelasiModel.FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId" Association="KelasiModel.FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId" Association="KelasiModel.FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+            <End Role="Users_Authors" EntitySet="Users_Authors" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Topic_TopicId" Type="Int32" />
+          <NavigationProperty Name="Topic" Relationship="KelasiModel.FK_dbo_Categories_dbo_Topics_Topic_TopicId" FromRole="Categories" ToRole="Topics" />
+          <NavigationProperty Name="Videos" Relationship="KelasiModel.FK_dbo_Videos_dbo_Categories_Category_CategoryId" FromRole="Categories" ToRole="Videos" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Library_LibraryId" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="KelasiModel.FK_dbo_Categories_dbo_Topics_Topic_TopicId" FromRole="Topics" ToRole="Categories" />
+          <NavigationProperty Name="Videos" Relationship="KelasiModel.FK_dbo_Videos_dbo_Topics_Topic_TopicId" FromRole="Topics" ToRole="Videos" />
+        </EntityType>
+        <EntityType Name="Users_Authors">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Bio" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="User_UserId" Type="Int32" />
+          <NavigationProperty Name="Videos" Relationship="KelasiModel.FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId" FromRole="Users_Authors" ToRole="Videos" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="VideoId" />
+          </Key>
+          <Property Name="VideoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ReleasedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfviewers" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfSubscribers" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Category_CategoryId" Type="Int32" />
+          <Property Name="Topic_TopicId" Type="Int32" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="Language_LanguageId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="KelasiModel.FK_dbo_Videos_dbo_Categories_Category_CategoryId" FromRole="Videos" ToRole="Categories" />
+          <NavigationProperty Name="Topic" Relationship="KelasiModel.FK_dbo_Videos_dbo_Topics_Topic_TopicId" FromRole="Videos" ToRole="Topics" />
+          <NavigationProperty Name="Users_Authors" Relationship="KelasiModel.FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId" FromRole="Videos" ToRole="Users_Authors" />
+        </EntityType>
+        <Association Name="FK_dbo_Categories_dbo_Topics_Topic_TopicId">
+          <End Role="Topics" Type="KelasiModel.Topic" Multiplicity="0..1" />
+          <End Role="Categories" Type="KelasiModel.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="Topic_TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Categories_Category_CategoryId">
+          <End Role="Categories" Type="KelasiModel.Category" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="Category_CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Topics_Topic_TopicId">
+          <End Role="Topics" Type="KelasiModel.Topic" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="Topic_TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Videos_dbo_Users_Authors_AuthorI_AuthorId">
+          <End Role="Users_Authors" Type="KelasiModel.Users_Authors" Multiplicity="0..1" />
+          <End Role="Videos" Type="KelasiModel.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Authors">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KelasiModelStoreContainer" CdmEntityContainer="KelasiEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="KelasiModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Topic_TopicId" ColumnName="Topic_TopicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topics">
+            <EntityTypeMapping TypeName="KelasiModel.Topic">
+              <MappingFragment StoreEntitySet="Topics">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Library_LibraryId" ColumnName="Library_LibraryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Authors">
+            <EntityTypeMapping TypeName="KelasiModel.Users_Authors">
+              <MappingFragment StoreEntitySet="Users_Authors">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="User_UserId" ColumnName="User_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="KelasiModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReleasedDate" ColumnName="ReleasedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="NumberOfviewers" ColumnName="NumberOfviewers" />
+                <ScalarProperty Name="NumberOfSubscribers" ColumnName="NumberOfSubscribers" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Category_CategoryId" ColumnName="Category_CategoryId" />
+                <ScalarProperty Name="Topic_TopicId" ColumnName="Topic_TopicId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Language_LanguageId" ColumnName="Language_LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

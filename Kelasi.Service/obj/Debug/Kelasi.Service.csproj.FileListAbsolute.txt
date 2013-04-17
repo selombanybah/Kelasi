@@ -1,0 +1,13 @@
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Service.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Service.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\obj\Debug\Kelasi.Service.csprojResolveAssemblyReference.cache
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\obj\Debug\Kelasi.Service.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\obj\Debug\Kelasi.Service.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.DAL.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Model.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Repository.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\EntityFramework.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.DAL.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Model.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\Kelasi.Repository.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.Service\bin\Debug\EntityFramework.xml

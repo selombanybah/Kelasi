@@ -1,0 +1,9 @@
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\obj\Debug\Kelasi.DAL.csprojResolveAssemblyReference.cache
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\Kelasi.DAL.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\Kelasi.DAL.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\EntityFramework.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\Kelasi.Model.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\Kelasi.Model.pdb
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\bin\Debug\EntityFramework.xml
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\obj\Debug\Kelasi.DAL.dll
+c:\users\selom\documents\visual studio 2012\Projects\Kelasi\Kelasi.DAL\obj\Debug\Kelasi.DAL.pdb
